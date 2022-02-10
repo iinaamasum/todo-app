@@ -3,7 +3,7 @@ document.getElementById("add-work").addEventListener("click", function () {
   const createTr = document.createElement("tr");
   createTr.innerHTML = `
   <th class="px-4 py-2 text-center">${inputVal}</th>
-  <th class="px-4 py-2 text-center">In Progress</th>
+  <th id="completed" class="px-4 py-2 text-center">In Progress</th>
   <th class="px-4 py-2 text-center">
     <button class="complete-work bg-green-500 text-white rounded-lg px-2 py-1">Complete</button>
     <button class="delete-work bg-red-600 text-white rounded-lg px-2 py-1">Delete</button>
@@ -25,7 +25,14 @@ document.getElementById("add-work").addEventListener("click", function () {
     btn.addEventListener("click", function (e) {
       e.target.parentNode.parentNode.style.color = "green";
       e.target.parentNode.parentNode.style.textDecoration = "line-through";
-      btn.innerText = 'Uncomplete';
+      document.getElementById("completed").innerText = "Completed";
+      btn.innerText = "Uncomplete";
+      btn.addEventListener("click", function (e) {
+        e.target.parentNode.parentNode.style.color = "purple";
+        e.target.parentNode.parentNode.textDecoration = "underline";
+        document.getElementById("completed").innerText = "In Progress";
+        btn.innerText = "Complete";
+      });
     });
   }
 });
