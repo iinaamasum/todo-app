@@ -2,12 +2,12 @@ document.getElementById("add-work").addEventListener("click", function () {
   const inputVal = document.getElementById("input").value;
   const createTr = document.createElement("tr");
   createTr.innerHTML = `
-  <th class="px-4 py-2 text-center">${inputVal}</th>
-  <th id="completed" class="px-4 py-2 text-center">In Progress</th>
-  <th class="px-4 py-2 text-center">
+  <td class="px-4 py-2 text-center">${inputVal}</td>
+  <td class="completed" class="px-4 py-2 text-center">Complete</td>
+  <td class="px-4 py-2 text-center">
     <button class="complete-work bg-green-500 text-white rounded-lg px-2 py-1">Complete</button>
     <button class="delete-work bg-red-600 text-white rounded-lg px-2 py-1">Delete</button>
-  </th>
+  </td>
   `;
   document.getElementById("tbody").appendChild(createTr);
   document.getElementById("input").value = "";
@@ -25,11 +25,9 @@ document.getElementById("add-work").addEventListener("click", function () {
     btn.addEventListener("click", function (e) {
       e.target.parentNode.parentNode.style.color = "green";
       e.target.parentNode.parentNode.style.textDecoration = "line-through";
-      document.getElementById("completed").innerText = "Completed";
       btn.innerText = "Uncomplete";
       btn.addEventListener("click", function (e) {
         e.target.parentNode.parentNode.style.color = "purple";
-        e.target.parentNode.parentNode.textDecoration = "underline";
         document.getElementById("completed").innerText = "In Progress";
         btn.innerText = "Complete";
       });
